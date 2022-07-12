@@ -1,0 +1,24 @@
+<li class="list-inline-item">
+    <div class="dropdown">
+        <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-more-fill"></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end chatOptions">
+            {{#if chatContent.group}}
+                {{#ifCond chatStatus.is_chat_muted '>' 0}}
+                    <a class="dropdown-item muteButton" onclick="changeMuteStatus(0,{{user.user_id}},{{chatContent.group.group_id}}, 'group')" href="javascript:void(0)">Un Mute <i class="ri-volume-up-line float-end text-muted"></i></a>
+                {{else}}
+                    <a class="dropdown-item muteButton" onclick="changeMuteStatus(1,{{user.user_id}},{{chatContent.group.group_id}}, 'group')" href="javascript:void(0)">Mute <i class="ri-volume-mute-line float-end text-muted"></i></a>
+                {{/ifCond}}
+                <a class="dropdown-item" href="javascript:void(0)">Delete <i class="ri-delete-bin-line float-end text-muted"></i></a>
+            {{else}}
+                {{#ifCond chatStatus.is_chat_muted '>' 0}}
+                    <a class="dropdown-item muteButton" onclick="changeMuteStatus(0,{{user.user_id}},{{chatContent.user.user_id}}, 'private')" href="javascript:void(0)">Un Mute <i class="ri-volume-up-line float-end text-muted"></i></a>
+                {{else}}
+                    <a class="dropdown-item muteButton" onclick="changeMuteStatus(1,{{user.user_id}},{{chatContent.user.user_id}}, 'private')" href="javascript:void(0)">Mute <i class="ri-volume-mute-line float-end text-muted"></i></a>
+                {{/ifCond}}
+                <a class="dropdown-item" href="javascript:void(0)">Delete <i class="ri-delete-bin-line float-end text-muted"></i></a>
+            {{/if}}
+        </div>
+    </div>
+</li>

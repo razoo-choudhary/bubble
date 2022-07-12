@@ -1,0 +1,72 @@
+<div>
+    <div class="p-4">
+        <div class="user-chat-nav float-end">
+            <div  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Create group">
+                <button type="button" class="btn btn-link text-decoration-none text-muted font-size-18 py-0" data-bs-toggle="modal" data-bs-target="#addgroup-exampleModal">
+                    <i class="ri-group-line me-1 ms-0"></i>
+                </button>
+            </div>
+        </div>
+        <h4 class="mb-4">Groups</h4>
+        <div class="modal fade" id="addgroup-exampleModal" tabindex="-1" role="dialog" aria-labelledby="addgroup-exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-size-16" id="addgroup-exampleModalLabel">Create New Group</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        </button>
+                    </div>
+                    <form id="createNewGroup">
+                    <div class="modal-body p-4">
+                        <div class="mb-4">
+                            <label for="addgroupname-input" class="form-label">Group Name</label>
+                            <input type="text" name="group_name" class="form-control" id="addgroupname-input" placeholder="Enter Group Name">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Group Members</label>
+                            <div class="mb-3">
+                                <button class="btn btn-light btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#groupmembercollapse" aria-expanded="false" aria-controls="groupmembercollapse">
+                                    Select Members for this group
+                                </button>
+                            </div>
+                            <div class="collapse" id="groupmembercollapse">
+                                <div class="card border">
+                                    <div class="card-header">
+                                        <h5 class="font-size-15 mb-0">Contacts</h5>
+                                    </div>
+                                    <div class="card-body p-2">
+                                        <div data-simplebar style="max-height: 150px;">
+                                            <div>
+                                                <ul class="list-unstyled contact-list">
+                                                    {{#each contacts}}
+                                                        <li>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" name="group_members" value="{{user_id}}" class="form-check-input" id="memberCheck{{user_id}}">
+                                                                <label class="form-check-label" for="memberCheck{{user_id}}">{{UpperFirst first_name}} {{UpperFirst last_name}}</label>
+                                                            </div>
+                                                        </li>
+                                                    {{/each}}
+                                                    <input style="display: none" checked type="checkbox" name="group_members" value="{{user.user_id}}" class="form-check-input">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="addgroupdescription-input" class="form-label">Group Description</label>
+                            <textarea class="form-control" name="group_description" id="addgroupdescription-input" rows="3" placeholder="Enter Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create Groups</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{>chat/group/list}}
+    </div>
+</div>

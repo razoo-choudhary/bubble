@@ -1,0 +1,33 @@
+<div>
+    <h5 class="mb-3 px-3 font-size-16">Recent</h5>
+    <div class="chat-message-list px-2" data-simplebar >
+        <ul class="list-unstyled chat-list chat-user-list recentChatList" id="ddh">
+            {{#each chatList}}
+                <li data-search-tag="{{opposingUser.first_name}} {{opposingUser.last_name}}">
+                    <a href="javascript:void(0)" onclick="loadChat($(this))" data-username="{{opposingUser.username}}" data-id="{{opposingUser.user_id}}">
+                        <div class="d-flex">
+                            <div class="chat-user-img {{#ifCond (CalculateOnlineStatus opposingUser.last_seen) '==' 0}} online {{/ifCond}} align-self-center me-3 ms-0">
+                                <img src="{{opposingUser.user_avatar}}" class="rounded-circle avatar-xs" alt="">
+                                <span class="user-status"></span>
+                            </div>
+                            <div class="flex-grow-1 overflow-hidden">
+                                <h5 class="text-truncate font-size-15 mb-1">{{UpperFirst opposingUser.first_name}} {{UpperFirst opposingUser.last_name}}</h5>
+                                <p class="chat-user-message text-truncate mb-0">
+                                    {{#if unreadChatLastMessage.message}}
+                                        {{unreadChatLastMessage.message}}
+                                    {{else}}
+                                        Say 👋 to your new friend
+                                    {{/if}}
+                                </p>
+                            </div>
+                            <div class="font-size-11 time-message">{{MomentFormat unreadChatLastMessage.messageTime}}</div>
+                            <div class="unread-message">
+                                <span class="badge badge-soft-danger rounded-pill" style="display: {{#ifCond unreadChatLastMessage.count '<' 1}}none;{{/ifCond}}">{{unreadChatLastMessage.count}}</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>

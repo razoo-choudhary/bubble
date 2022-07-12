@@ -1,0 +1,23 @@
+<div>
+    <ul class="list-unstyled contact-list contactList">
+        {{#each contacts}}
+            <li data-search-tag="{{first_name}} {{last_name}}">
+                <div class="d-flex align-items-center">
+                    <div class="flex-grow-1" onclick="newChatContact( $(this) )" data-username="{{username}}">
+                        <h5 class="font-size-14 m-0">{{UpperFirst first_name}} {{UpperFirst last_name}}</h5>
+                    </div>
+                    <div class="dropdown">
+                        <a href="#" data-id="{{user_id}}" class="text-muted dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="ri-more-2-fill"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" data-id="{{user_id}}" href="#">Share <i class="ri-share-line float-end text-muted"></i></a>
+                            <a class="dropdown-item" data-id="{{user_id}}" href="#">Block <i class="ri-forbid-line float-end text-muted"></i></a>
+                            <a class="dropdown-item" data-id="{{user_id}}" href="#">Remove <i class="ri-delete-bin-line float-end text-muted"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {{/each}}
+    </ul>
+</div>

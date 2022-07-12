@@ -1,0 +1,26 @@
+<div class="modal fade" id="send-file-modal" tabindex="-1" role="dialog" aria-labelledby="send-file-modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-size-16" id="addContact-exampleModalLabel">Add Files To Send</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="alert alert-danger" role="alert" id="alert-file-send" style="display: none">
+                </div>
+                <div class="row p-4 x-fil-con" style="padding-left: 40px !important;">
+
+                </div>
+                <div class="mb-2">
+                    <label for="text-input" class="form-label mb-3">Caption</label>
+                    <input type="text" class="form-control" name="caption" id="text-input" placeholder="Caption">
+                </div>
+            </div>
+            <div class="modal-footer" style="justify-content: center">
+                <button type="button" style="width: 45%" class="btn btn-secondary add-file">Add</button>
+                <button type="button" style="width: 45%" class="btn btn-primary check">Send</button>
+            </div>
+            <input type="file" style="display: none;" name="send-file-as-message" id="send-file-as-message" />
+        </div>
+    </div>
+</div>

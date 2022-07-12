@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta content="{{config.app_url}}" name="rootPath" />
+    <meta content="{{request.sessionID}}" name="wave" />
+
+    <link rel="shortcut icon" href="/resources/assets/images/favicon.ico">
+
+    {{#ifCond pageName '==' "home"}}
+        <link rel="stylesheet" type="text/css" href="/resources/assets/libs/magnific-popup/magnific-popup.css" />
+        <link rel="stylesheet" type="text/css" href="/resources/assets/libs/owl.carousel/assets/owl.carousel.min.css" />
+        <link rel="stylesheet" type="text/css" href="/resources/assets/libs/owl.carousel/assets/owl.theme.default.min.css" />
+        <link rel="stylesheet" type="text/css" href="/node_modules/node-snackbar/dist/snackbar.min.css" />
+    {{/ifCond}}
+
+    <link rel="stylesheet" type="text/css" href="/resources/assets/css/bootstrap.min.css" id="bootstrap-style" />
+    <link rel="stylesheet" type="text/css" href="/resources/assets/css/icons.min.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/assets/css/app.min.css" id="app-style" />
+
+    <script src="/resources/assets/libs/vanillaEmojiPicker.js"></script>
+    <script src="/resources/assets/js/htmlRender.js"></script>
+    <script src="/resources/assets/libs/moment/moment.min.js"></script>
+    <script src="/resources/assets/libs/howler/howler.min.js"></script>
+    <script src="/resources/assets/libs/jquery/jquery.min.js"></script>
+    <script src="/node_modules/socket.io/client-dist/socket.io.min.js"></script>
+    <script>
+        let messageNotificationSound = new Howl({src: ['/resources/assets/sound/message.mp3', '/resources/assets/sound/message.ogg'],});
+        messageNotificationSound.once('load', function(){});
+        messageNotificationSound.on('end', function(){});
+
+        /**
+         *
+         * @returns {*}
+         */
+        const scrollIt = () => $('.chat-conversation .simplebar-content-wrapper').animate({ scrollTop: $(document).height() * 5 * $(document).height() }, 1200);
+
+    </script>
+</head>
+<body data-layout-mode="{{#if user}}{{user.appearance_mode}}{{/if}}">
+
+{{{ body }}}
+
+<script src="/resources/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/resources/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="/resources/assets/libs/node-waves/waves.min.js"></script>
+<script src="/node_modules/node-snackbar/dist/snackbar.min.js"></script>
+
+{{#ifCond pageName '==' "home"}}
+    <script src="/resources/assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/resources/assets/libs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="/resources/assets/js/pages/index.init.js"></script>
+{{/ifCond}}
+<script src="/resources/assets/js/app.js"></script>
+<script src="/resources/assets/js/handler.js"></script>
+<script src="/resources/assets/js/requests.js"></script>
+<script src="/resources/assets/js/socket.js"></script>
+</body>
+</html>

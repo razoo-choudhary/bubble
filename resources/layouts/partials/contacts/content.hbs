@@ -1,0 +1,55 @@
+{{>modal/fileUpload}}
+<div class="tab-pane" id="pills-contacts" role="tabpanel" aria-labelledby="pills-contacts-tab">
+    <div>
+        <div class="p-4">
+            <div class="user-chat-nav float-end">
+                <div data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Contact">
+                    <button type="button" class="btn btn-link text-decoration-none text-muted font-size-18 py-0" data-bs-toggle="modal" data-bs-target="#addContact-exampleModal">
+                        <i class="ri-user-add-line"></i>
+                    </button>
+                </div>
+            </div>
+            <h4 class="mb-4">Contacts</h4>
+            <div class="modal fade" id="addContact-exampleModal" tabindex="-1" role="dialog" aria-labelledby="addContact-exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title font-size-16" id="addContact-exampleModalLabel">Add Contact</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            </button>
+                        </div>
+                        <form method="post" id="new-friend-request">
+                            <div class="modal-body p-4">
+                                <div class="mb-3">
+                                    <label for="contemporarily-input" class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" id="contemporarily-input" placeholder="Enter Email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contact-invite-message-input" class="form-label">Invitation Message</label>
+                                    <textarea class="form-control" id="contact-invite-message-input" rows="3" name="invitation" placeholder="Enter Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-link" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Invite Contact</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="search-box chat-search-box">
+                <div class="input-group bg-light  input-group-lg rounded-3">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-link text-decoration-none text-muted pe-1 ps-3" type="button">
+                            <i class="ri-search-line search-icon font-size-18"></i>
+                        </button>
+                    </div>
+                    <input type="text" id="searchUserContactList" class="form-control bg-light" placeholder="Search users">
+                </div>
+            </div>
+        </div>
+        <div class="p-4 chat-message-list chat-group-list" data-simplebar>
+            {{>contacts/list}}
+        </div>
+    </div>
+</div>

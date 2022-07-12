@@ -1,0 +1,17 @@
+<div class="px-4 pb-4" dir="ltr">
+    <div class="owl-carousel owl-theme" id="user-status-carousel">
+        {{#each (breakOnCount contacts)}}
+            {{#ifCond (CalculateOnlineStatus last_seen) '<' 1}}
+                <div class="item activeStatusSlider" data-id="{{user_id}}">
+                    <a href="#" class="user-status-box">
+                        <div class="avatar-xs mx-auto d-block chat-user-img online">
+                            <img src="{{user_avatar}}" alt="user-img" class="img-fluid rounded-circle">
+                            <span class="user-status"></span>
+                        </div>
+                        <h5 class="font-size-13 text-truncate mt-3 mb-1">{{UpperFirst first_name}}</h5>
+                    </a>
+                </div>
+            {{/ifCond}}
+        {{/each}}
+    </div>
+</div>

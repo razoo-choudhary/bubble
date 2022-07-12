@@ -1,0 +1,26 @@
+<div class="row g-0">
+    <div class="col">
+        <input name="new-message" data-from="{{user.user_id}}" {{#if chatContent.group}} data-to="{{chatContent.group.group_id}}" data-type="group" {{else}} data-to="{{chatContent.user.user_id}}" {{/if}} type="text" class="form-control form-control-lg bg-light border-light fcdr" placeholder="Enter Message...">
+    </div>
+    <div class="col-auto">
+        <div class="chat-input-links ms-md-2 me-md-0">
+            <ul class="list-inline mb-0">
+                <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-placement="top" title="Emoji">
+                    <button type="button" class="btn btn-link text-decoration-none font-size-16 btn-lg waves-effect emojis_btn">
+                        <i class="ri-emotion-happy-line"></i>
+                    </button>
+                </li>
+                <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-placement="top" title="Attached File">
+                    <button type="button" class="btn btn-link text-decoration-none font-size-16 btn-lg waves-effect send-file">
+                        <i class="ri-attachment-line"></i>
+                    </button>
+                </li>
+                <li class="list-inline-item">
+                    <button type="button" class="btn btn-primary font-size-16 btn-lg chat-send waves-effect waves-light new-message-btn">
+                        <i class="ri-send-plane-2-fill"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

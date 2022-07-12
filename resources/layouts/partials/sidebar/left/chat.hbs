@@ -1,0 +1,12 @@
+<div class="chat-leftsidebar me-lg-1 ms-lg-0">
+    <div class="tab-content">
+        {{>user/content}}
+        <div class="tab-pane fade show active" id="pills-chat" role="tabpanel" aria-labelledby="pills-chat-tab">
+            {{>chat/personal/content}}
+        </div>
+        <div class="tab-pane" id="pills-groups" role="tabpanel" aria-labelledby="pills-groups-tab">
+            {{>chat/group/content}}
+            {{>contacts/content}}
+            {{>settings/content}}
+        </div>
+    </div>

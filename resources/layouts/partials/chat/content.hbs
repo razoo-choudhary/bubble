@@ -1,0 +1,44 @@
+<div class="w-100 overflow-hidden position-relative chat-container" {{#if chatContent.group}} data-group-id="{{chatContent.group.group_id}}" {{else}} data-private-id="{{chatContent.user.user_id}}" {{/if}}>
+    <div class="p-3 p-lg-4 border-bottom user-chat-topbar">
+        <div class="row align-items-center">
+            <div class="col-sm-4 col-8">
+                <div class="d-flex align-items-center">
+                    <div class="d-block d-lg-none me-2 ms-0">
+                        <a href="javascript: void(0);" class="user-chat-remove text-muted font-size-16 p-2"><i class="ri-arrow-left-s-line"></i></a>
+                    </div>
+                    <div class="me-3 ms-0">
+                        <img {{#if chatContent.group}} src="{{chatContent.group.group_image}}" {{else}} src="{{chatContent.user.user_avatar}}" {{/if}} class="rounded-circle avatar-xs" alt="">
+                    </div>
+                    <div class="flex-grow-1 overflow-hidden">
+                        <h5 class="font-size-16 mb-0 text-truncate">
+                            <a href="javascript:void(0)" class="text-reset user-profile-show">{{#if chatContent.group}} {{ chatContent.group.group_name}} {{else}} {{chatContent.user.first_name}} {{/if}}</a>
+                            {{#ifCond chatContent.group.group_id "==" null}}
+                                <i class="ri-record-circle-fill font-size-10 {{#ifCond (CalculateOnlineStatus chatContent.user.last_seen) '==' 0}}text-success{{/ifCond}} d-inline-block ms-1"></i>
+                            {{/ifCond}}
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 col-4">
+                <ul class="list-inline user-chat-nav text-end mb-0">
+                    <li class="list-inline-item">
+                        <div class="dropdown">
+                            <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="ri-search-line"></i>
+                            </button>
+                            <div class="dropdown-menu p-0 dropdown-menu-end dropdown-menu-md">
+                                <div class="search-box p-2">
+                                    <label for="xtr" style="display: none;"></label>
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Search.." id="xtr">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{>chat/includes/options}}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="chat-conversation p-3 p-lg-4" data-simplebar="init">{{>chat/includes/bubble}}</div>
+    <div class="chat-input-section p-3 p-lg-4 border-top mb-0"> {{>chat/includes/footer}} </div>
+</div>

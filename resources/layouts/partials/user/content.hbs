@@ -1,0 +1,95 @@
+<div class="tab-pane" id="pills-user" role="tabpanel" aria-labelledby="pills-user-tab">
+    <div>
+        <div class="px-4 pt-4">
+            <div class="user-chat-nav float-end">
+<!--                <div class="dropdown">-->
+<!--                    <a href="#" class="font-size-18 text-muted dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                        <i class="ri-more-2-fill"></i>-->
+<!--                    </a>-->
+<!--                    <div class="dropdown-menu dropdown-menu-end">-->
+<!--                        <a class="dropdown-item " href="javascript:void(0)">Generate Profile Avatar</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+            <h4 class="mb-0">My Profile</h4>
+        </div>
+        <div class="text-center p-4 border-bottom">
+            <div class="mb-4">
+                <img src="{{user.user_avatar}}" class="rounded-circle avatar-lg img-thumbnail" alt="">
+            </div>
+            <span style="display: none" id="nameF" data-id="{{user.user_id}}" first_name="{{UpperFirst user.first_name}}" last_name="{{UpperFirst user.last_name}}"> </span>
+            <h5 class="font-size-16 mb-1 text-truncate">{{UpperFirst user.first_name}} {{UpperFirst user.last_name}}</h5>
+            <p class="text-muted text-truncate mb-1"><i class="ri-record-circle-fill font-size-10 text-success me-1 ms-0 d-inline-block"></i> Active</p>
+        </div>
+        <div class="p-4 user-profile-desc" data-simplebar>
+            <div id="tabprofile" class="accordion">
+                <div class="card accordion-item border">
+                    <div class="accordion-header" id="attachfile2">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#attachfile" aria-expanded="true" aria-controls="attachfile">
+                            <h5 class="font-size-14 m-0">
+                                <i class="ri-user-2-line me-2 ms-0 ms-0 align-middle d-inline-block"></i> Friend Request
+                            </h5>
+                        </button>
+                    </div>
+                    <div id="attachfile" class="accordion-collapse collapse show" aria-labelledby="attachfile2" data-bs-parent="#tabprofile">
+                        <div class="accordion-body">
+                            {{#if FrnRequest}}
+                                {{#each FrnRequest}}
+                                    <div class="card p-2 border mb-2 request-list" data-id="{{list_id}}">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar-sm me-3 ms-0">
+                                                <div class="avatar-title bg-soft-primary text-primary rounded font-size-20">
+                                                    <img class="rounded-2" src="{{user_avatar}}"  alt="{{username}}"/>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <div class="text-start">
+                                                    <h5 class="font-size-14 mb-1">{{UpperFirst first_name}} {{UpperFirst last_name}}</h5>
+                                                    <p class="text-muted font-size-13 mb-0">{{user_email}}</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="ms-4 me-0">
+                                                <ul class="list-inline mb-0 font-size-18">
+                                                    <li class="list-inline-item">
+                                                        <a href="javascript:void(0)" onclick="AcceptRequest('{{list_id}}', $(this))" class="text-muted px-1 accept-request">
+                                                            <i class="ri-user-follow-line"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item dropdown">
+                                                        <a class="dropdown-toggle text-muted px-1" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="ri-more-fill"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" data-id="{{list_id}}" href="javascript:void(0)">Report</a>
+                                                            <a class="dropdown-item" onclick="RejectRequest('{{list_id}}', $(this))" data-id="" href="javascript:void(0)">Delete</a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            {{else}}
+                                <div class="card p-2 border mb-2 empty-request-list">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar-sm me-3 ms-0">
+                                            <div class="avatar-title bg-soft-primary text-primary rounded font-size-20">
+                                                <img class="avatar-xs" src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/monkey_1f412.png" alt="no-request" />
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="text-start">
+                                                <p class="text-muted font-size-13 mb-0"> No Pending Friend Requests </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

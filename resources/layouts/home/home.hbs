@@ -1,0 +1,16 @@
+<div class="layout-wrapper d-lg-flex">
+    {{>sidebar/left/content}}
+    {{>sidebar/left/chat}}
+    <div class="user-chat w-100 overflow-hidden">
+        {{#if navExplicit}}
+            <div class="d-lg-flex" id="chatContent">
+                {{>chat/content}}
+                {{>sidebar/right/content}}
+            </div>
+        {{else}}
+            <div class="d-lg-flex" id="chatContent" style=" display: flex;height: 100%;align-items: center;justify-content: center;" >
+                <img style="width: 50%;" src="/resources/assets/images/chat-non-type.svg" alt="No-Chat Selected" />
+            </div>
+        {{/if}}
+    </div>
+</div>
