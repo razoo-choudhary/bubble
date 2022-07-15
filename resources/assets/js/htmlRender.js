@@ -19,13 +19,13 @@ function newChatBubble(avatar, message_id, message_text, created_at, first_name,
     if(class_name === "right"){
         dropDown  = '                                    <div class="dropdown-menu">\n' + copyD +
             '                                        \n' +
-            '                                        <a class="dropdown-item"  href="javascript:void(0)">Forward <i class="ri-chat-forward-line float-end text-muted"></i></a>\n' +
+            '                                        <a class="dropdown-item forward-button" data-id="'+message_id+'" href="javascript:void(0)">Forward <i class="ri-chat-forward-line float-end text-muted"></i></a>\n' +
             '                                        <a class="dropdown-item"  href="javascript:void(0)">Delete <i class="ri-delete-bin-line float-end text-muted"></i></a>\n' +
             '                                    </div>\n';
     }else{
         dropDown = '                                    <div class="dropdown-menu">\n' +
             '                                        <a class="dropdown-item"  href="javascript:void(0)" onclick="copyToClipboard(\'#textContent'+message_id+'\')">Copy <i class="ri-file-copy-line float-end text-muted"></i></a>\n' +
-            '                                        <a class="dropdown-item"  href="javascript:void(0)">Forward <i class="ri-chat-forward-line float-end text-muted"></i></a>\n' +
+            '                                        <a class="dropdown-item forward-button" data-id="'+message_id+'"  href="javascript:void(0)">Forward <i class="ri-chat-forward-line float-end text-muted"></i></a>\n' +
             '                                    </div>\n';
     }
     if(is_file.message_type === "image"){
@@ -251,6 +251,13 @@ function newContactList( fullname, username, user_id){
         '                </div>\n' +
         '            </li>'
     $('.contactList').prepend(data)
+    let x = '<li>\n' +
+        '    <div class="form-check">\n' +
+        ' <input type="checkbox" name="group_members" value="'+user_id+'" class="form-check-input" id="memberCheck'+user_id+'">\n' +
+        '    <label class="form-check-label" for="memberCheck'+user_id+'">'+fullname+'</label>\n' +
+        '  </div>\n' +
+        '</li>';
+    $(".contact-list").append(x)
 }
 
 function newGroupChatList ( group_id, group_name, group_image, count){

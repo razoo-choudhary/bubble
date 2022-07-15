@@ -4,7 +4,7 @@
   "description": "Bubble - Chat Messenger",
   "main": "index.ts",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "ts-node index.ts",
     "build": "tsc",
     "dev": "nodemon --exec ts-node index.ts",
     "lint": "eslint . --ext .ts"

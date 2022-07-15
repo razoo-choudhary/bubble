@@ -144,7 +144,8 @@ export class ContactController{
             await FriendList.update({ id : friendList.id }, { invitation_accepted : 1}).then( async () => {
                 const user = await User.findOneBy({ user_id : friendList.friend_user_id })
                 const OpposingUser = await UserController.GetSocketIdUsingUserId(friendList.user_id)
-                if(user){
+                if( user ){
+                    SocketOptions.io.to(user.socket_connection_id).emit("request-accepted", { user : await User.findOneBy({user_id: friendList.user_id}) })
                     SocketOptions.io.to(OpposingUser).emit("request-accepted", { user })
                     return response.status(200).json({
                         "message"  : "Request Accepted",

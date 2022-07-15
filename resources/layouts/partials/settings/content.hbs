@@ -32,12 +32,12 @@
                     <div id="personalinfo" class="accordion-collapse collapse show" aria-labelledby="personalinfo1" data-bs-parent="#settingprofile">
                         <div class="accordion-body">
                             <div class="float-end">
-                                <button type="button" class="btn btn-light btn-sm"><i class="ri-edit-fill me-1 ms-0 align-middle"></i> Edit</button>
+                                <button type="button" class="btn btn-light btn-sm edit-name-button"><i class="ri-edit-fill me-1 ms-0 align-middle"></i> Edit</button>
                             </div>
 
-                            <div>
+                            <div class="setting-name">
                                 <p class="text-muted mb-1">Name</p>
-                                <h5 class="font-size-14">{{UpperFirst user.username}}</h5>
+                                <h5 class="font-size-14">{{UpperFirst user.first_name}} {{UpperFirst user.last_name}}</h5>
                             </div>
 
                             <div class="mt-4">

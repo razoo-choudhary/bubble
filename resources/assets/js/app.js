@@ -143,18 +143,23 @@ function loadMessageContentFooter () {
     })
 }
 
+
+function loadBeforeLoad(){
+    $(".user-chat").addClass("user-chat-show");// });
+    loadMessageContentFooter()
+}
 /**
  *
  * @param username
  * @returns {Promise<void>}
  */
 async function loadMainChat( username ){
-    $("#chatContent").load( "/get-chat-content/chat/" + username + "?limit=" + 15, loadMessageContentFooter);
+    $("#chatContent").load( "/get-chat-content/chat/" + username + "?limit=" + 15, loadBeforeLoad);
     scrollIt();
 }
 
 async function LoadMainGroupChat( group_id ){
-    $("#chatContent").load( "/get-chat-content/group/" + group_id + "?limit=" + 15, loadMessageContentFooter);
+    $("#chatContent").load( "/get-chat-content/group/" + group_id + "?limit=" + 15, loadBeforeLoad);
     scrollIt();
 }
 

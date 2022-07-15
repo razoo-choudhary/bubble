@@ -43,6 +43,27 @@ $(function ($){
         })
     })
 
+    let ediSaveButton = $(".edit-name-button")
+    ediSaveButton.on("click", function () {
+        let x = $(".setting-name");
+        x.find("h5").hide();
+        if(x.find("input").length < 1){
+            x.append('<input type="text" class="form-control mt-3 input-new-name" value="'+x.find("h5").html()+'" />');
+            $(this).html("Save")
+        }
+    })
+
+    $( document ).on("keyup", ".input-new-name", function (){
+        ediSaveButton.addClass("save-name-button")
+        ediSaveButton.removeClass("edit-name-button")
+    })
+    $( document ).on( "click", ".save-name-button", function() {
+        UpdateUserPreferences({
+            todo:   "change-user-full-name",
+            name:   $(".input-new-name").val()
+        })
+    });
+
     loadMessageContentFooter();
     scrollIt();
     dynamicSearch($('#searchUserRecentChatInput'),'.recentChatList')

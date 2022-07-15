@@ -16,6 +16,7 @@ export class UserController{
         if(todo === "dark-mode") await UserController.UpdateAppearance( request, response )
         if(todo === "update-active-status") await  UserController.UpdateActiveStatus( request, response)
         if(todo === "generate-random-avatar") await UserController.GenerateAvatar(request, response )
+        if(todo === "change-user-full-name") await UserController.UpdateUserFullName( request, response )
     }
 
     /**
@@ -84,6 +85,15 @@ export class UserController{
         })
     }
 
+    private static async UpdateUserFullName(request : Request, response : Response){
+        if(request.body.name){
+            const FullName = Functions.SanitizeInput(request.body.name).split(" ")
+            await UserController.ChangeUserFullName(request, { first_name : Functions.UpperFirst(FullName[0]), last_name : Functions.UpperFirst(FullName[1] ?? "") }).then( () => {
+                return response.status(200).json({"location" : "/"})
+            })
+        }
+    }
+
     /**
      *
      * @param request
@@ -93,6 +103,11 @@ export class UserController{
      */
     private static async UpdateUser( request : Request, data = {} ){
         const user : any    = await AuthMiddleware.LoggedInUser( request )
+        await User.update( {user_id : user.user_id}, data)
+    }
+
+    private static async ChangeUserFullName( request : Request, data : any ){
+        const user: any = await AuthMiddleware.LoggedInUser( request )
         await User.update( {user_id : user.user_id}, data)
     }
 }
